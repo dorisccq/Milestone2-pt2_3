@@ -33,9 +33,17 @@ def textGeneration(msg):
     out_message = response.choices[0].message.content
     return (out_message)
 
-# Function to run both models (image to text and text generation)
+# Function to run all three models (image to text, image classification, and text generation)
 def runModels(url):
+    # Generate caption from image
     scenario = img2text(url)
+    
+    # Classify the image
+    classification = classifyImage(url)
+    
+    # Generate Instagram post text based on scenario
     message = {"role": "user", "content": scenario}
     story = textGeneration(message)
-    return ([scenario, story])
+    
+    # Return the caption, story, and classification result
+    return (scenario, story, classification)

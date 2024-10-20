@@ -27,7 +27,7 @@ def textGeneration(msg):
         },
         {
             "role": "system",
-            "content": "You are also a professional photographer. Provide suggestions on how the given photo can be adjusted or improved (such as lighting, composition, or any post-processing edits)."
+            "content": "You are also a professional photographer. Provide suggestions on how the given photo can be adjusted or improved (such as lighting, composition, or any post-processing edits), in the format of bullet points."
         
         
     }]
