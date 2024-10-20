@@ -1,5 +1,10 @@
 // Javascript Code Goes here
-let divData, story_text, speech, startBtn, stopBtn;
+let divData, story_text, speech, startBtn, stopBtn//, bgImage;
+
+/*function preload() {
+    // 加载背景图片，确保在 setup() 之前完成加载
+    bgImage = loadImage('abstractColors.jpg');  // 在这里替换为你的图片路径
+}*/
 
 function setup() {
     let c = createCanvas(600, 600);
@@ -22,7 +27,9 @@ function setup() {
 }
 
 function draw() {
-    background(33, 33, 33);
+    //image(bgImage, 0, 0, width, height);
+
+    background(0);
     fill(255);
 
     rectMode(CENTER);

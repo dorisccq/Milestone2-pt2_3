@@ -13,7 +13,7 @@ def textGeneration(msg):
 
     client = OpenAI()
     
-    msg_list = [{"role": "system", "content": "You are an expert short story teller. Using a simple narrative you generate story in less than 100 words based on the given scenario."}]
+    msg_list = [{"role": "system", "content": "You are an expert social media content creator. Using engaging visuals and captions, you generate an Instagram post description in less than 100 words based on the given scenario."}]
     msg_list.append(msg)
     
     response = client.chat.completions.create(
