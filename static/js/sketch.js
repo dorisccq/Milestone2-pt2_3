@@ -2,8 +2,7 @@
 let divData, story_text, speech, startBtn, stopBtn//, bgImage;
 
 /*function preload() {
-    // 加载背景图片，确保在 setup() 之前完成加载
-    bgImage = loadImage('abstractColors.jpg');  // 在这里替换为你的图片路径
+    bgImage = loadImage('abstractColors.jpg'); 
 }*/
 
 function setup() {
@@ -24,6 +23,13 @@ function setup() {
     stopBtn.parent(stopBtnDiv);
     stopBtn.class('btn btn-danger');
     stopBtn.mousePressed(stopSpeaking);
+
+      // copy button
+    let copyBtnDiv = document.querySelector("#copyBtnDiv");
+    copyBtn = createButton('Copy Text');
+    copyBtn.parent(copyBtnDiv);
+    copyBtn.class('btn btn-success');
+    copyBtn.mousePressed(copyText);
 }
 
 function draw() {
@@ -49,4 +55,21 @@ function startSpeaking() {
 
 function stopSpeaking() {
     speech.stop();
+}
+
+// copy
+function copyText() {
+    // textarea
+    let tempTextarea = document.createElement("textarea");
+    tempTextarea.value = story_text;  // copy story_text 
+    document.body.appendChild(tempTextarea);  
+    tempTextarea.select();  // choose textarea content
+
+    // copy command
+    document.execCommand("copy");
+
+    // remove textarea
+    document.body.removeChild(tempTextarea);
+
+    alert("Text copied to clipboard!");  // alert
 }

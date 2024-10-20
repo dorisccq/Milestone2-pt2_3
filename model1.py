@@ -20,17 +20,7 @@ def textGeneration(msg):
 
     client = OpenAI()
     
-    msg_list = [{
-         
-            "role": "system", 
-            "content": "You are an expert social media content creator. Using engaging visuals and captions, you generate an Instagram post description in less than 100 words based on the given scenario."
-        },
-        {
-            "role": "system",
-            "content": "You are also a professional photographer. Provide suggestions on how the given photo can be adjusted or improved (such as lighting, composition, or any post-processing edits)."
-        
-        
-    }]
+    msg_list = [{"role": "system", "content": "You are an expert social media content creator. Using engaging visuals and captions, you generate an Instagram post description in less than 100 words based on the given scenario."}]
     msg_list.append(msg)
     
     response = client.chat.completions.create(
@@ -42,7 +32,6 @@ def textGeneration(msg):
     
     out_message = response.choices[0].message.content
     return (out_message)
-
 
 # Function to run both models (image to text and text generation)
 def runModels(url):
