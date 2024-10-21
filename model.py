@@ -7,13 +7,6 @@ def img2text(imgUrl):
     text = img_to_text_pipe(imgUrl)[0]["generated_text"]
     return text
 
-# New image classification pipeline
-def classifyImage(imgUrl):
-    img_classify_pipe = pipeline("image-classification", model="google/vit-base-patch16-224")
-    #pipe = pipeline("image-classification", model="google/vit-base-patch16-224")
-    classification = img_classify_pipe(imgUrl)
-    return classification
-
 # Function to generate a short story based on a scenario
 def textGeneration(msg):
     """msg should be a dict of the form - {"role": "user","content": scenario}"""
@@ -23,14 +16,17 @@ def textGeneration(msg):
     msg_list = [{
          
             "role": "system", 
-            "content": "You are an expert social media content creator. Using engaging visuals and captions, you generate an Instagram post description in less than 100 words based on the given scenario."
+            "content": "You are an expert social media content creator. Using engaging visuals and captions, you generate a social media (instagram, twitter, tiktok...) post description in less than 100 words based on the given scenario."
         },
         {
             "role": "system",
-            "content": "You are also a professional photographer. Provide suggestions on how the given photo can be adjusted or improved (such as lighting, composition, or any post-processing edits), in the format of bullet points."
-        
-        
-    }]
+            "content": "You are also a writer. Generate a relevant quote or poem based on the content that you can use for the post, enclosed in double quotation marks, in the format of a single sentence and no more than 2 lines."
+    },
+    {
+           "role": "system",
+           "content": "You are also a professional photographer. Provide suggestions on how the given photo can be adjusted or improved (such as lighting, composition, or any post-processing edits), in the format of bullet points and No more than 3 points."
+      
+   }]
     msg_list.append(msg)
     
     response = client.chat.completions.create(
