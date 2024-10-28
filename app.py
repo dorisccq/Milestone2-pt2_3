@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
-from model_milestone1 import runModels
+from model_ag import runModels
 from model_milestone2 import runModels_langchain, runModels_langchain_RAG
 
 import os
