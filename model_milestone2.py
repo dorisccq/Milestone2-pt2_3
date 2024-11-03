@@ -5,50 +5,53 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
 
+# Convert image to text description
 def img2text(url):
     img_to_text_pipe = pipeline("image-to-text", model="Salesforce/blip-image-captioning-large")
     text = img_to_text_pipe(url)[0]["generated_text"]
     return text
 
-def textGeneration_langChain(msg,type):
+
+def textGeneration_langchain(msg,type):
     """
-    msg is the scenario for the story from the pic (hugging face model output);
-    type is the genre of the story- Horror, Fantasy, Adventure, Comedy, Mystery, Romance
+    msg is the scenario for the text from the pic (hugging face model output);
+   
+    type is the name of the artist - including Dua Lipa, Ariana Grande, Charlie Puth, Drake, Billie Eilish, Eminem, Lady Gaga, Beyoncé, Ed Sheeran, Justin Bieber, Taylor Swift, Rihanna, Coldplay, Nicki Minaj, Katy Perry, Maroon 5, Selena Gomez, Post Malone
+
     """
     llm = ChatOpenAI(
-        model="gpt-4o",
-        temperature=0.2,
-        max_tokens=200,
-        timeout=None,
-        max_retries=2
-    )
+            model="gpt-4o",
+            temperature=0.2,
+            max_tokens=200,
+            timeout=None,
+            max_retries=2
+        )
 
     prompt = ChatPromptTemplate.from_messages(
         [
-            (
-                "system",
-                "You are an expert short {story_type} story teller. Using a simple narrative you generate {story_type} story in less than 100 words based on the given scenario.",
+            ("system",
+
+        "You are an expert in recommending and writing song lyrics. Based on the following emotional content. "
+        "Choose lyrics from the artist {lyric_type} that matches this emotion as inspirations. "
+        "Then write several lyric lines that best fits the {lyric_type} and says when this artist meets certain sitations, what lyrics she/her will sing"
             ),
-            (
-                "human", 
-                "{scenario_lang}"
-            ),
-        ]
-    )
+            ("human", "{scenario_lang}"), ] )
+    
+
 
     chain = prompt | llm | StrOutputParser()
 
     out_message = chain.invoke({
-        "story_type" : type,
-        "scenario_lang" : msg,
-    })
-
+            "lyric_type" : type,
+            "scenario_lang" : msg,
+        })
+    
     return out_message
 
 def runModels_langchain(url, type):
     scenario = img2text(url)
-    story = textGeneration_langChain(scenario,type)
-    return([scenario,story])
+    lyric = textGeneration_langchain(scenario,type)
+    return([scenario,lyric])
 
 
 def getRetriever(dir):
@@ -60,13 +63,14 @@ def getRetriever(dir):
     retriever = vectorDB.as_retriever(search_type="similarity", search_kwargs={"k": 3})
     return retriever
 
-
 def textGeneration_langChain_RAG(msg,type,retrieverDir):
     """
     msg is the scenario for the story from the pic (hugging face model output);
-    type is the genre of the story- Horror, Fantasy, Adventure, Comedy, Mystery, Romance
+   
+    type is the name of the artist - including Dua Lipa, Ariana Grande, Charlie Puth, Drake, Billie Eilish, Eminem, Lady Gaga, Beyoncé, Ed Sheeran, Justin Bieber, Taylor Swift, Rihanna, Coldplay, Nicki Minaj, Katy Perry, Maroon 5, Selena Gomez, Post Malone
+
     retriever is the vector DB with relevant stories from txt version of 
-        stories dataset from Hugging face - https://huggingface.co/datasets/ShehryarAzhar/stories
+       lyrics dataset from Hugging face - https://huggingface.co/datasets/cmsolson75/artist_song_lyric_dataset
     """
     llm = ChatOpenAI(
             model="gpt-4o",
@@ -77,12 +81,10 @@ def textGeneration_langChain_RAG(msg,type,retrieverDir):
         )
 
     system_prompt = (
-        "You are an expert short {story_type} story teller. " 
-        "Use the following pieces of retrieved context to generate {story_type} story. "
-        "Use a simple narrative structure to generate {story_type} story based on the given scenario"
-        "keep the story to less than 150 words."
-        "\n\n"
-        "{context}"
+
+        "You are an expert in recommending and writing song lyrics. Based on the following emotional content. "
+        "Choose lyrics from the artist {lyric_type} that matches this emotion as inspirations. "
+        "Then write several lyric lines that best fits the {lyric_type} and says when this artist meets certain sitations, what lyrics she/her will sing"
     )
 
     prompt = ChatPromptTemplate.from_messages(
@@ -97,7 +99,7 @@ def textGeneration_langChain_RAG(msg,type,retrieverDir):
     retriever = getRetriever(retrieverDir)
 
     out_message = rag_chain.invoke({
-            "story_type" : type,
+            "lyric_type" : type,
             "context":retriever,
             "scenario_lang" : msg,
         })
@@ -106,6 +108,6 @@ def textGeneration_langChain_RAG(msg,type,retrieverDir):
 
 def runModels_langchain_RAG(url, type, retrieverDir):
     scenario = img2text(url)
-    story = textGeneration_langChain_RAG(scenario,type,retrieverDir)
+    lyric = textGeneration_langChain_RAG(scenario,type,retrieverDir)
     # print(story)
-    return([scenario,story])
+    return([scenario,lyric])

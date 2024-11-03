@@ -71,7 +71,7 @@ function draw(){
 function startSpeaking(){
     if(story_text !== "Waiting for the story..."){
 
-        if(story_style === "Horror"){
+        if(story_style === "Ariana Grande"){
             slectedImg = horrorImg;
             img_is_selected = true;
             speech.setVoice(0);
@@ -79,7 +79,7 @@ function startSpeaking(){
             speech.setRate(0.5);
             speech.speak(story_text);
         }
-        else if(story_style === "Fantasy"){
+        else if(story_style === "Justin Bieber"){
             slectedImg = fantasyImg;
             img_is_selected = true;
             speech.setVoice(1);
@@ -87,7 +87,7 @@ function startSpeaking(){
             speech.setRate(1);
             speech.speak(story_text);
         }
-        else if(story_style === "Adventure"){
+        else if(story_style === "Taylor Swift"){
             slectedImg = adventureImg;
             img_is_selected = true;
             speech.setVoice(1);
@@ -95,7 +95,7 @@ function startSpeaking(){
             speech.setRate(1.5);
             speech.speak(story_text);
         }
-        else if(story_style === "Comedy"){
+        else if(story_style === "Dua Lipa"){
             slectedImg = comedyImg;
             img_is_selected = true;
             speech.setVoice(2);
@@ -103,7 +103,7 @@ function startSpeaking(){
             speech.setRate(1);
             speech.speak(story_text);
         }
-        else if(story_style === "Mystery"){
+        else if(story_style === "Lady Gaga"){
             slectedImg = mysteryImg;
             img_is_selected = true;
             speech.setVoice(0);
@@ -111,7 +111,7 @@ function startSpeaking(){
             speech.setRate(1);
             speech.speak(story_text);
         }
-        else if(story_style === "Romance"){
+        else if(story_style === "Charlie Puth"){
             slectedImg = romanceImg;
             img_is_selected = true;
             speech.setVoice(2);

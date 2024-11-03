@@ -44,9 +44,7 @@ def interaction_2():
         db_dir = os.path.join(cwd,"chroma_db")
 
         story_style = request.form.get('storyRadioOptions')
-        # print(f"the story style selcted is {story_style}")
-
-        # (caption, story) = runModels_langchain(upld_path,story_style)
+        
         (caption, story) = runModels_langchain_RAG(upld_path,story_style,db_dir)
 
         
