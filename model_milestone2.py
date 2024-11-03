@@ -82,9 +82,8 @@ def textGeneration_langChain_RAG(msg,type,retrieverDir):
 
     system_prompt = (
 
-        "You are an expert in recommending and writing song lyrics. Based on the following emotional content. "
-        "Choose lyrics from the artist {lyric_type} that matches this emotion as inspirations. "
-        "Then write several lyric lines that best fits the {lyric_type} and says when this artist meets certain sitations, what lyrics she/her will sing"
+        "You are an expert in recommending and writing song lyrics, choose lyrics from the artist {lyric_type} that matches this scene. "
+        "Then write a verse including lyrics that best fits the {lyric_type}. "
     )
 
     prompt = ChatPromptTemplate.from_messages(

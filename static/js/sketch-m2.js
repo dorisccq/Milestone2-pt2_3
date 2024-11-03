@@ -43,14 +43,14 @@ function setup(){
 }
 
 function draw(){
-    background(33,33,33);
-    fill(255);
+    background(255);
+    fill(0);
 
     rectMode(CENTER);
 
     story_text = divData.dataset.story;
 
-    display_text = "Story style: "+story_style+"\n"+"\n"+story_text
+    display_text = "Artist: "+story_style+"\n"+"\n"+story_text
 
     if(img_is_selected ===true){
         tint(95,95,95, 255);
@@ -69,9 +69,9 @@ function draw(){
 
 
 function startSpeaking(){
-    if(story_text !== "Waiting for the story..."){
+    if(story_text !== "Waiting for the lyric..."){
 
-        if(story_style === "Ariana Grande"){
+        if(story_style === "Ariana_Grande"){
             slectedImg = horrorImg;
             img_is_selected = true;
             speech.setVoice(0);
@@ -79,7 +79,7 @@ function startSpeaking(){
             speech.setRate(0.5);
             speech.speak(story_text);
         }
-        else if(story_style === "Justin Bieber"){
+        else if(story_style === "Justin_Bieber"){
             slectedImg = fantasyImg;
             img_is_selected = true;
             speech.setVoice(1);
@@ -87,7 +87,7 @@ function startSpeaking(){
             speech.setRate(1);
             speech.speak(story_text);
         }
-        else if(story_style === "Taylor Swift"){
+        else if(story_style === "Taylor_Swift"){
             slectedImg = adventureImg;
             img_is_selected = true;
             speech.setVoice(1);
@@ -95,7 +95,7 @@ function startSpeaking(){
             speech.setRate(1.5);
             speech.speak(story_text);
         }
-        else if(story_style === "Dua Lipa"){
+        else if(story_style === "Dua_Lipa"){
             slectedImg = comedyImg;
             img_is_selected = true;
             speech.setVoice(2);
@@ -103,7 +103,7 @@ function startSpeaking(){
             speech.setRate(1);
             speech.speak(story_text);
         }
-        else if(story_style === "Lady Gaga"){
+        else if(story_style === "Lady_Gaga"){
             slectedImg = mysteryImg;
             img_is_selected = true;
             speech.setVoice(0);
@@ -111,7 +111,7 @@ function startSpeaking(){
             speech.setRate(1);
             speech.speak(story_text);
         }
-        else if(story_style === "Charlie Puth"){
+        else if(story_style === "Charlie_Puth"){
             slectedImg = romanceImg;
             img_is_selected = true;
             speech.setVoice(2);
