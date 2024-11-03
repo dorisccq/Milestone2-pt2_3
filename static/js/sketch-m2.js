@@ -1,19 +1,18 @@
 let divData, story_text, speech, startBtn, stopBtn, canvas;
 
-let slectedImg, horrorImg, fantasyImg, adventureImg, comedyImg, mysteryImg, romanceImg;
+let slectedImg, Img1, Img2, Img3, Img4, Img5, Img6;
 
 let img_is_selected = false;
 
 
 function preload(){
-    horrorImg = loadImage("imgs/horror.jpg"); 
-    fantasyImg = loadImage("imgs/fantasy.jpg"); 
-    adventureImg = loadImage("imgs/adventure.jpg"); 
-    comedyImg = loadImage("imgs/comedy.jpg"); 
-    mysteryImg = loadImage("imgs/mystery.jpg"); 
-    romanceImg = loadImage("imgs/romance.jpg"); 
-    // slectedImg = horrorImg ;
-    // story_style = "Horror";
+    Img1 = loadImage("imgs/horror.jpg"); 
+    Img2 = loadImage("imgs/fantasy.jpg"); 
+    Img3 = loadImage("imgs/adventure.jpg"); 
+    Img4 = loadImage("imgs/comedy.jpg"); 
+    Img5 = loadImage("imgs/mystery.jpg"); 
+    Img6 = loadImage("imgs/romance.jpg"); 
+   
 }
 
 
@@ -72,7 +71,7 @@ function startSpeaking(){
     if(story_text !== "Waiting for the lyric..."){
 
         if(story_style === "Ariana_Grande"){
-            slectedImg = horrorImg;
+            slectedImg = Img1;
             img_is_selected = true;
             speech.setVoice(0);
             speech.setPitch(0.01);
@@ -80,7 +79,7 @@ function startSpeaking(){
             speech.speak(story_text);
         }
         else if(story_style === "Justin_Bieber"){
-            slectedImg = fantasyImg;
+            slectedImg = Img2;
             img_is_selected = true;
             speech.setVoice(1);
             speech.setPitch(1);
@@ -88,7 +87,7 @@ function startSpeaking(){
             speech.speak(story_text);
         }
         else if(story_style === "Taylor_Swift"){
-            slectedImg = adventureImg;
+            slectedImg = Img3;
             img_is_selected = true;
             speech.setVoice(1);
             speech.setPitch(1.5);
@@ -96,7 +95,7 @@ function startSpeaking(){
             speech.speak(story_text);
         }
         else if(story_style === "Dua_Lipa"){
-            slectedImg = comedyImg;
+            slectedImg = Img4;
             img_is_selected = true;
             speech.setVoice(2);
             speech.setPitch(2);
@@ -104,7 +103,7 @@ function startSpeaking(){
             speech.speak(story_text);
         }
         else if(story_style === "Lady_Gaga"){
-            slectedImg = mysteryImg;
+            slectedImg = Img5;
             img_is_selected = true;
             speech.setVoice(0);
             speech.setPitch(2);
@@ -112,7 +111,7 @@ function startSpeaking(){
             speech.speak(story_text);
         }
         else if(story_style === "Charlie_Puth"){
-            slectedImg = romanceImg;
+            slectedImg = Img6;
             img_is_selected = true;
             speech.setVoice(2);
             speech.setPitch(1);
