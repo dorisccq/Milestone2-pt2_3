@@ -42,7 +42,7 @@ function setup(){
 }
 
 function draw(){
-    background(100);
+    background(218,187,181,10);
     fill(255);
 
     rectMode(CENTER);
