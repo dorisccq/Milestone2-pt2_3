@@ -74,31 +74,31 @@ function startSpeaking(){
             slectedImg = Img1;
             img_is_selected = true;
             speech.setVoice(0);
-            speech.setPitch(0.01);
-            speech.setRate(0.5);
+            speech.setPitch(1.2);
+            speech.setRate(0.6);
             speech.speak(story_text);
         }
         else if(story_style === "Justin_Bieber"){
             slectedImg = Img2;
             img_is_selected = true;
             speech.setVoice(1);
-            speech.setPitch(1);
+            speech.setPitch(1.2);
             speech.setRate(1);
             speech.speak(story_text);
         }
         else if(story_style === "Taylor_Swift"){
             slectedImg = Img3;
             img_is_selected = true;
-            speech.setVoice(1);
-            speech.setPitch(1.5);
-            speech.setRate(1.5);
+            speech.setVoice(0.9);
+            speech.setPitch(0.7);
+            speech.setRate(1);
             speech.speak(story_text);
         }
         else if(story_style === "Dua_Lipa"){
             slectedImg = Img4;
             img_is_selected = true;
-            speech.setVoice(2);
-            speech.setPitch(2);
+            speech.setVoice(0);
+            speech.setPitch(0.05);
             speech.setRate(1);
             speech.speak(story_text);
         }
@@ -106,14 +106,14 @@ function startSpeaking(){
             slectedImg = Img5;
             img_is_selected = true;
             speech.setVoice(0);
-            speech.setPitch(2);
+            speech.setPitch(0.5);
             speech.setRate(1);
             speech.speak(story_text);
         }
         else if(story_style === "Charlie_Puth"){
             slectedImg = Img6;
             img_is_selected = true;
-            speech.setVoice(2);
+            speech.setVoice(1);
             speech.setPitch(1);
             speech.setRate(1);
             speech.speak(story_text);
