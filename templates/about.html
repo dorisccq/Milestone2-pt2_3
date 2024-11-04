@@ -3,8 +3,8 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1 class="text-center display-3">Imaginarium</h1>
-      <p>"Imaginarium" is a captivating web application that blends artificial intelligence with creative storytelling to transform simple images into immersive narrative experiences. At its core, the concept of Imaginarium revolves around using state-of-the-art machine learning models to interpret visual content and generate rich, engaging stories that are specific to the themes or moods depicted in the images.</p>
+      <h1 class="text-center display-3">Influencer</h1>
+      <p>"Influencer" is an innovative web application designed to elevate social media content creation by integrating advanced AI capabilities. Beyond simple image analysis, this platform generates tailored post captions, recommends music that complements the mood or theme of your visuals, and even crafts custom lyrics. Whether you are looking for the perfect words to accompany a photo or a song to set the scene, this tool is designed to make your posts more engaging and personalized.</p>
     </div>
   </div>
   <div class="row justify-content-center">
@@ -12,12 +12,14 @@
     <div class="col-4">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">Milestone 1: Initial Development and AI Integration</h2>
-          <p>Start your journey into AI-driven storytelling with Milestone 1. This phase focuses on setting up the foundational technology stack and integrating advanced AI models to transform images into captivating narratives.</p>
+          <h2 class="card-title">Milestone 1: Post Generation and AI Integration</h2>
+          <p>
+            Start your journey into AI-driven social media content creation in Milestone 1. This phase centers on establishing the core technology stack and integrating sophisticated AI models to generate engaging post content from images, laying the groundwork for a personalized and creative posting experience.
+          </p>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Image-to-Text:</strong> Utilize Hugging Face’s model to extract descriptive captions from uploaded images.</li>
             <li class="list-group-item"class="list-group-item"><strong>Story Generation:</strong> Employ OpenAI's GPT-4 to craft engaging short stories based on the captions.</li>
-            <li class="list-group-item"><strong>Interactive Display:</strong> Stories are dynamically presented on a P5.js canvas with accompanying narration via the P5.js speech library.</li>
+            <li class="list-group-item"><strong>Interactive Display:</strong> Posts are presented on a P5.js canvas with accompanying narration via the P5.js speech library.</li>
             <li class="list-group-item"><strong>Framework:</strong> Built using Flask and styled with Bootstrap for a robust and responsive user experience.</li>
           </ul>
         </div>
@@ -27,16 +29,18 @@
     <div class="col-4">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">Milestone 2: Advanced Features and Enhanced Interactivity</h2>
-          <p>Elevate the narrative experience in Milestone 2 by incorporating the LangChain library to add depth and interactivity to your stories. Select from various genres and enjoy contextually enriched narratives.</p>
+          <h2 class="card-title">Milestone 2: Artist Options and Enhanced Interactivity</h2>
+          <p>By incorporating the LangChain library including different artists' lyrics, more unique and accurate song recommendations are generated. Enhance your experience in Milestone 2 by incorporating personalized music recommendations that provide easy access to albums for seamless searching. Additionally, enjoy AI-generated lyrics crafted in the style of popular artists, adding a unique, context-rich touch to each song suggestion.</p>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>Genre Selection:</strong> Users can choose from six genres, tailoring the storytelling to their preferences.</li>
+            <li class="list-group-item"><strong>Genre Selection:</strong> Users can choose from six genres, choose different artists according to their preferences.</li>
             <li class="list-group-item"><strong>Prompt Templates and RAG:</strong> Enhance the narrative quality with structured prompts and contextually rich content using Retrieval-Augmented Generation.</li>
             <li class="list-group-item"><strong>Customized Narration:</strong> Different voices from the P5.js speech library match the selected genres, enriching the auditory experience.</li>
-            <li class="list-group-item"><strong>Mood-Driven Backgrounds:</strong> Background imagery on the P5.js canvas adapts to the genre, setting the appropriate mood and atmosphere.</li>
+            <li class="list-group-item"><strong>Mood-Driven Backgrounds:</strong> Background imagery on the P5.js canvas are the photos of artist, offering more immersive experiences.</li>
           </ul>
         </div>
       </div>
     </div>
 </div>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 {%endblock%}
+
