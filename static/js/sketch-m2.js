@@ -6,12 +6,12 @@ let img_is_selected = false;
 
 
 function preload(){
-    Img1 = loadImage("imgs/horror.jpg"); 
-    Img2 = loadImage("imgs/fantasy.jpg"); 
-    Img3 = loadImage("imgs/adventure.jpg"); 
-    Img4 = loadImage("imgs/comedy.jpg"); 
-    Img5 = loadImage("imgs/mystery.jpg"); 
-    Img6 = loadImage("imgs/romance.jpg"); 
+    Img1 = loadImage("imgs/1.jpg"); 
+    Img2 = loadImage("imgs/2.jpg"); 
+    Img3 = loadImage("imgs/3.jpg"); 
+    Img4 = loadImage("imgs/4.jpg"); 
+    Img5 = loadImage("imgs/5.jpg"); 
+    Img6 = loadImage("imgs/6.jpg"); 
    
 }
 
@@ -42,8 +42,8 @@ function setup(){
 }
 
 function draw(){
-    background(255);
-    fill(0);
+    background(100);
+    fill(255);
 
     rectMode(CENTER);
 

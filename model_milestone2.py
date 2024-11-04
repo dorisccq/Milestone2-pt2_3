@@ -82,7 +82,7 @@ def textGeneration_langChain_RAG(msg,type,retrieverDir):
 
     system_prompt = (
 
-        "You are an expert in recommending and writing song lyrics, choose lyrics from the artist {lyric_type} that matches this scene. "
+        "You are an expert in recommending and writing song lyrics, choose lyrics from the artist {lyric_type} that matches this scene and write them down. To recommend this song to audiences, tells the correct album name. "
         "Then write a verse including lyrics that best fits the {lyric_type}. "
     )
 
