@@ -1,4 +1,6 @@
-/* styles.css */
 body {
-    background-color: pink; /* 选择你想要的颜色 */
+    background-image: url("../imgs/back.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
