@@ -1,57 +1,79 @@
-from flask import Flask, render_template, request
+import streamlit as st
+import openai
 from dotenv import load_dotenv
-from model_milestone1 import runModels
-from model_milestone2 import runModels_langchain, runModels_langchain_RAG
-
 import os
-from werkzeug.utils import secure_filename
-
 load_dotenv()
 
-app = Flask(__name__, template_folder = 'templates', static_folder='static',static_url_path='/')
+from utils.tts import get_tts, post_tts_job
+from utils.llm import get_ans
+from utils.picgen import sample_block_call
+st.sidebar.title('Hello I am CHIIKANA AI')
+import time
 
-@app.route('/')
-def index():
-    return render_template('about.html', active='index')
+from PIL import Image
+import requests
+import io
 
-@app.route('/milestone1', methods=["GET","POST"])
-def interaction_1():
-    if request.method == 'POST':
-        f = request.files["imgFile"]
-        file_name = secure_filename(f.filename)
-        cwd = os.getcwd()
-        upld_path = cwd+'/static/imgs/'+file_name
-        img_path = 'imgs/'+file_name
-        f.save(upld_path)
+st.image("./sources/IMG_1222.GIF", caption="Baby I am here for you ~")
 
-        (caption, story) = runModels(upld_path)
-        
 
-        return render_template('milestone1.html', active='interaction_1', imgPath=img_path, story=story, caption=caption)
-    else:
-        return render_template('milestone1.html', active='interaction_1')
+st.sidebar.header('Q&A')
+question = st.sidebar.text_input('Input any questions here')
+tone = st.sidebar.selectbox(
+    "choose a tone to communicate",
+    ( "bestie", "parent","sis/bro","peer","lover","pet")
+)
+
+if st.sidebar.button("Submit"):
+    if tone == "bestie":
+        st.sidebar.write("Bestie Tone")
+        question +='please answer me as you are my bestie.'
+
+    if tone == "parent":
+        st.sidebar.write ("Parent Tone")
+        question +='please answer me as you are my parent.'
+
+    if tone == "sis/bro":
+        st.sidebar.write ("Sis/Bro Tone")
+        question +='please answer me as you are my sister or brother.'
+
+    if tone == "peer":
+        st.sidebar.write ("Peer Tone")
+        question +='please answer me as you are my peer, like my peer in school.'
+
+    if tone == "lover":
+        st.sidebar.write ("Lover Tone")
+        question +='please answer me as you are my lover, my darling, my sweetheart.'
+
+    elif tone == "pet":
+        st.sidebar.write("Pet Tone")
+        question +='please answer me as my pet -- a cat/dog'
     
-@app.route('/milestone2', methods=["GET","POST"])
-def interaction_2():
-    if request.method == 'POST':
-        f = request.files["imgFile"]
-        file_name = secure_filename(f.filename)
-        cwd = os.getcwd()
-        upld_path = cwd+'/static/imgs/'+file_name
-        img_path = 'imgs/'+file_name
-        f.save(upld_path)
+    answer = get_ans(question)
+    
+    st.write(answer)
+    try:
+        with st.spinner('Generating audio...'):
+            print('play audio')
+            t = int(time.time())
+            audio_bytes = get_tts(answer,t)
+            st.audio(audio_bytes, format='audio/wav')
+            st.success('Audio played!')
+    except Exception as e:
+        print(e)
 
-        db_dir = os.path.join(cwd,"chroma_db")
 
-        story_style = request.form.get('storyRadioOptions')
-        
-        (caption, story) = runModels_langchain_RAG(upld_path,story_style,db_dir)
+st.sidebar.header('Image for Ya')
 
-        
-
-        return render_template('milestone2.html', active='interaction_2', imgPath=img_path, story=story, caption=caption, style=story_style)
-    else:
-        return render_template('milestone2.html', active='interaction_2')
-
-if __name__ ==  '__main__':
-    app.run(host='0.0.0.0')
+question_pic = st.sidebar.text_input('Enter what pic you want today')
+    
+if st.sidebar.button("generate picture"):
+    with st.spinner("Generating picture..."):
+        try:
+            # Prepare the data and files for the POST request
+            
+            # Send POST request to the image service
+            picbyte = sample_block_call(question_pic)
+            st.image(picbyte, caption='picture', use_column_width=True)
+        except:
+            pass
