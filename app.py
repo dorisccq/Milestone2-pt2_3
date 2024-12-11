@@ -74,6 +74,6 @@ if st.sidebar.button("generate picture"):
             
             # Send POST request to the image service
             picbyte = sample_block_call(question_pic)
-            st.image(picbyte, caption='picture', use_column_width=True)
+            st.image(picbyte, caption='picture', use_container_width=True)
         except:
             pass
